@@ -1,0 +1,92 @@
+import React from "react";
+import {
+  Container,
+  TextField,
+  Avatar,
+  Grid,
+  Paper,
+  Typography,
+  Button,
+  Box,
+} from "@mui/material";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
+
+const AddPerson = () => {
+  // Dummy user data
+  const user = {
+    firstName: "John",
+    lastName: "Doe",
+    email: "johndoe@example.com",
+    phone: "+1234567890",
+    address: "123 Main St, City, Country",
+    profilePic: "https://via.placeholder.com/150", // Replace with actual profile URL
+  };
+
+  return (
+    <Container maxWidth="sm">
+      <Paper elevation={3} style={{ padding: 20, textAlign: "center" }}>
+        <Avatar
+          alt="Profile Picture"
+          src={user.profilePic}
+          sx={{ width: 100, height: 100, margin: "0 auto" }}
+        />
+        <Typography variant="h6" style={{ marginTop: 10 }}>
+          Profile
+        </Typography>
+        <Grid container spacing={2} style={{ marginTop: 20 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="First Name"
+              value={user.firstName}
+              fullWidth
+              InputProps={{ readOnly: true }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Last Name"
+              value={user.lastName}
+              fullWidth
+              InputProps={{ readOnly: true }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Email"
+              value={user.email}
+              fullWidth
+              InputProps={{ readOnly: true }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Phone"
+              value={user.phone}
+              fullWidth
+              InputProps={{ readOnly: true }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Address"
+              value={user.address}
+              fullWidth
+              InputProps={{ readOnly: true }}
+            />
+          </Grid>
+        </Grid>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Button
+            variant="contained"
+            endIcon={<UploadFileIcon />}
+            sx={{ margin: " 15px 0", alignItems: "center" }}
+          >
+            Register
+          </Button>
+        </Box>
+      </Paper>
+    </Container>
+  );
+};
+
+export default AddPerson;
