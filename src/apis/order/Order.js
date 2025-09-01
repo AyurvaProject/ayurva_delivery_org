@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_URL } from "../../constants/keys";
-import { GetCurrentUser } from "../Auth/Auth";
+import { GetCurrentUser } from "../auth/Auth";
 
 export const GetOrdersByDeliveryOrg = async () => {
     const response = await axios.get(`${API_URL}/orders/get/by-delivery-org/${GetCurrentUser().id}`,{

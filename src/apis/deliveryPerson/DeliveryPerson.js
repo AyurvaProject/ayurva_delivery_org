@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_URL } from "../../constants/keys";
-import { GetCurrentUser } from "../Auth/Auth";
+import { GetCurrentUser } from "../auth/Auth";
 
 export const SignUpDeliveryPerson = async (data) => {
     const response = await axios.post(`${API_URL}/auth/register/deliveryPerson`, data, {

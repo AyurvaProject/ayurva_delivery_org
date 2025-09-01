@@ -12,7 +12,7 @@ import {
   GetCurrentUser,
   GetCurrentToken,
   IsTokenExpired,
-} from "../apis/Auth/Auth";
+} from "../apis/auth/Auth";
 
 const AuthContext = createContext();
 

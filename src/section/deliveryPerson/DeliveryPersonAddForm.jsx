@@ -30,7 +30,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useDropzone } from "react-dropzone";
 import { useNavigate } from "react-router-dom";
 import { deliveryPersonSignupFormSchema } from "../../validation/deliveryPersonFormValidation/DeliveryPersonAddFormValidation";
-import { GetCurrentUser } from "../../apis/Auth/Auth";
+import { GetCurrentUser } from "../../apis/auth/Auth";
 import { SignUpDeliveryPerson } from "../../apis/deliveryPerson/DeliveryPerson";
 import { FileUpload } from "../../component/fileUpload/FileUpload";
 import CustomSnackbar from "../../component/snackbar/CustomSnackbar";
