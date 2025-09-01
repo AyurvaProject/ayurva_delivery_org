@@ -26,7 +26,7 @@ import axios from "axios";
 import { signupFormSchema } from "../../validation/signUpFormValidation/SignUpFormValidation";
 // import { FileInputField } from "../../component/fileUpload/FileInputField";
 import { FileUpload } from "../../component/fileUpload/FileUpload";
-import { SignUp } from "../../apis/Auth/Auth";
+import { SignUp } from "../../apis/auth/Auth";
 import CustomSnackbar from "../../component/snackbar/CustomSnackbar";
 
 const SignUpFormSection = () => {
