@@ -30,7 +30,7 @@ import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import VaccinesIcon from "@mui/icons-material/Vaccines";
-import { GetCurrentUser } from "../../apis/Auth/Auth";
+import { GetCurrentUser } from "../../apis/auth/Auth";
 import { useAuth } from "../../context/AuthContext";
 import ChecklistIcon from "@mui/icons-material/Checklist";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
