@@ -7,26 +7,42 @@ import Dashboard from "./pages/Dashboard";
 import AddPerson from "./pages/deliverypersons/AddPerson";
 import Orders from "./pages/orders/Orders";
 import Profile from "./pages/Profile";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./component/protectedRoute/ProtectedRoute";
+import SignUpPage from "./pages/auth/SignUp";
+import SignInPage from "./pages/auth/SignIn";
+import SinglePerson from "./pages/deliverypersons/SinglePerson";
+import PrOrders from "./pages/orders/PrOrders";
 
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/addPerson" element={<AddPerson />} />
-            <Route path="/personList" element={<DeliveryPersonList />} />
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/login" element={<SignInPage />} />
+            <Route element={<Layout />}>
+              <Route
+                element={<ProtectedRoute roles={["deliveryorganization"]} />}
+              >
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/addPerson" element={<AddPerson />} />
+                <Route path="/personList" element={<DeliveryPersonList />} />
+                <Route path="/person/:id" element={<SinglePerson />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/prorders" element={<PrOrders />} />
+                <Route
+                  path="/deliveryPersonDetails"
+                  element={<DeliveryPersonDetails />}
+                />
 
-            <Route
-              path="/deliveryPersonDetails"
-              element={<DeliveryPersonDetails />}
-            />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/orgProfile" element={<Profile />} />
-          </Route>
-        </Routes>
-      </Router>
+                <Route path="/orgProfile" element={<Profile />} />
+              </Route>
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
     </>
   );
 }

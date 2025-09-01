@@ -1,13 +1,7 @@
-import React from "react";
-import DataGridComponent from "../../component/datagrid/DataGrid";
-import { Box } from "@mui/material";
+import PersonListSection from "../../section/deliveryPerson/DeliveryPersonListSection";
 
 const DeliveryPersonList = () => {
-  return (
-    <Box sx={{ width: "100%" }}>
-      <DataGridComponent />
-    </Box>
-  );
+  return <PersonListSection />;
 };
 
 export default DeliveryPersonList;

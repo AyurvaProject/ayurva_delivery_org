@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import { Outlet } from "react-router-dom";
 import {
   AppBar,
@@ -19,26 +19,41 @@ import {
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "@mui/material";
 import ListIcon from "@mui/icons-material/List";
 import MenuIcon from "@mui/icons-material/Menu";
 import DescriptionIcon from "@mui/icons-material/Description";
-import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
-import CorporateFareIcon from "@mui/icons-material/CorporateFare";
-
-// const logo = require("../../assets/img/logo.png").default;
 import logo from "../../assets/img/logo.png";
 import LogoutIcon from "@mui/icons-material/Logout";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
+import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
+import VaccinesIcon from "@mui/icons-material/Vaccines";
+import { GetCurrentUser } from "../../apis/Auth/Auth";
+import { useAuth } from "../../context/AuthContext";
+import ChecklistIcon from "@mui/icons-material/Checklist";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
+import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
+import BlockIcon from "@mui/icons-material/Block";
 
 const drawerWidth = 300;
 
 const Layout = () => {
+  const { logout } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
   const theme = useTheme();
+
+  const getUser = async () => {
+    const user = await GetCurrentUser();
+    setUser(user);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -51,27 +66,19 @@ const Layout = () => {
       path: "/",
     },
     {
-      text: "Add a delivery Person",
-      icon: <PersonAddIcon />,
-      path: "/addPerson",
+      text: "Delivery Persons",
+      icon: <ChecklistIcon />,
+      path: "/personList",
     },
-    { text: "Delivery person  List", icon: <ListIcon />, path: "/personList" },
-
-    {
-      text: "Delivery Person Details",
-      icon: <DescriptionIcon />,
-      path: "/deliveryPersonDetails",
-    },
-
     {
       text: "Orders",
-      icon: <HomeRepairServiceIcon />,
+      icon: <PendingActionsIcon />,
       path: "/orders",
     },
     {
-      text: "Organization Profile",
-      icon: <CorporateFareIcon />,
-      path: "/orgProfile",
+      text: "Prescription Orders",
+      icon: <LibraryAddCheckIcon />,
+      path: `/prorders`,
     },
   ];
 
@@ -88,13 +95,14 @@ const Layout = () => {
                 borderRadius: 2,
                 transition: "background-color 0.3s ease-in-out",
                 "&:hover": {
-                  backgroundColor: "blue", // Change background color to blue on hover
+                  backgroundColor: "#004aad", // Change background color to blue on hover
+                  color: "white",
                 },
               }}
               onClick={() => navigate(item.path)}
             >
               <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
+              <ListItemText primary={item.text} sx={{ fontSize: 10 }} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -179,7 +187,7 @@ const Layout = () => {
             color: theme.palette.text.layoutSecondary,
           }}
         >
-          <Toolbar>
+          <Toolbar sx={{ bgcolor: "white" }}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -194,13 +202,13 @@ const Layout = () => {
               color="black"
               sx={{ alignContent: "center", alignItems: "flex-start" }}
             >
-              Delivery persons
+              Delivery Organization Dashboard
             </Typography>
 
             <Button
               endIcon={<LogoutIcon />}
               sx={{ ml: "auto", textTransform: "none" }}
-              onClick={() => navigate("/login")}
+              onClick={() => logout()}
             >
               Logout
             </Button>
