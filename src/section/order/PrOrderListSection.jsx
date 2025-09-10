@@ -130,7 +130,7 @@ const PrOrderListSection = () => {
             color="primary"
             size="small"
             onClick={() => {
-              navigate(`/person/${params.row.id}`);
+              navigate(`/prorder/${params.row.id}`);
             }}
           >
             View

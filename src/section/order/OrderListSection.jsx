@@ -127,7 +127,7 @@ const OrderListSection = () => {
             color="primary"
             size="small"
             onClick={() => {
-              navigate(`/person/${params.row.id}`);
+              navigate(`/order/${params.row.id}`);
             }}
           >
             View

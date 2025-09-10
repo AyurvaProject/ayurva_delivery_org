@@ -200,7 +200,13 @@ const Layout = () => {
             <Typography
               variant="h5"
               color="black"
-              sx={{ alignContent: "center", alignItems: "flex-start" }}
+              sx={{
+                mt: 1,
+                background: "linear-gradient(45deg, #004aad, #38b6ff)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontWeight: 650,
+              }}
             >
               Delivery Organization Dashboard
             </Typography>

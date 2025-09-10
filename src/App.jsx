@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./component/layout/Layout";
 import DeliveryPersonList from "./pages/deliverypersons/DeliveryPersonList";
@@ -13,6 +14,8 @@ import SignUpPage from "./pages/auth/SignUp";
 import SignInPage from "./pages/auth/SignIn";
 import SinglePerson from "./pages/deliverypersons/SinglePerson";
 import PrOrders from "./pages/orders/PrOrders";
+import SingleOrder from "./pages/orders/SingleOrder";
+import SinglePrOrder from "./pages/orders/SinglePrOrder";
 
 function App() {
   return (
@@ -31,7 +34,9 @@ function App() {
                 <Route path="/personList" element={<DeliveryPersonList />} />
                 <Route path="/person/:id" element={<SinglePerson />} />
                 <Route path="/orders" element={<Orders />} />
+                <Route path="/order/:id" element={<SingleOrder />} />
                 <Route path="/prorders" element={<PrOrders />} />
+                <Route path="/prorder/:id" element={<SinglePrOrder />} />
                 <Route
                   path="/deliveryPersonDetails"
                   element={<DeliveryPersonDetails />}

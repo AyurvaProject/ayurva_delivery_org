@@ -49,7 +49,7 @@ const SignInSection = () => {
       <CardMedia
         component="img"
         sx={{ width: "50%", backgroundSize: "cover" }}
-        image="./loginbg.png"
+        image="./bg1.png"
         alt="loginbg"
       />
     </Card>

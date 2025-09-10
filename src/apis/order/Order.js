@@ -21,3 +21,15 @@ export const GetPrescriptionOrdersByDeliveryOrg = async () => {
 
     return response.data.data;
 }
+
+export const GetOrderById = async (id) => {
+    const response = await axios.get(`${API_URL}/orders/${id}`)
+
+    return response.data.data;
+}
+
+export const GetPrOrderById = async (id) => {
+    const response = await axios.get(`${API_URL}/prescription-orders/${id}`)
+
+    return response.data.data;
+}
